@@ -84,10 +84,10 @@
         <div class="card-body">
           <!-- Display the detected media -->
           <div class="mb-4">
-            <h5>Detected {{ mediaType }}</h5>
+            <h5>Detected {{ type }}</h5>
 
             <!-- Display Image -->
-            <ng-container *ngIf="mediaType === 'image'">
+            <ng-container *ngIf="mediaType === 0">
               <img
                 [src]="detectedImageSrc"
                 alt="Detected License Plate"
@@ -96,7 +96,7 @@
             </ng-container>
 
             <!-- Display Video -->
-            <ng-container *ngIf="mediaType === 'video'">
+            <ng-container *ngIf="mediaType === 1">
               <video
                 [src]="videoSrc"
                 controls
@@ -117,7 +117,7 @@
           <!-- Additional Info -->
           <p class="text-muted">
             The text above has been extracted from the detected vehicle
-            registration plate in your uploaded {{ mediaType }}.
+            registration plate in your uploaded {{ type }}.
           </p>
 
           <!-- Additional data visualizations could go here -->

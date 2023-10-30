@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MediaType } from 'src/app/models/type';
 import { DataService } from 'src/app/services/data.service';
 
 @Component({
@@ -8,11 +9,10 @@ import { DataService } from 'src/app/services/data.service';
 })
 export class HomeComponent implements OnInit {
   resultsAvailable: boolean = false;
-  extractedText: string = 'AP2414646';
+  extractedText: string = '';
   selectedFile!: File;
-  uploadResponse: any = null;
   uploadSuccessful: boolean = false;
-  mediaType: 'image' | 'video' | null = null;
+  mediaType: MediaType | null = null;
   detectedImageSrc!: string;
   videoSrc!: string;
   isProcessed: boolean = false;
@@ -20,16 +20,21 @@ export class HomeComponent implements OnInit {
 
   constructor(private dataService: DataService) {}
 
+  get type(): string {
+    return this.mediaType === MediaType.image ? 'image' : 'video';
+  }
+
   ngOnInit(): void {
     this.dataService.getHello().subscribe((data) => {
-      console.log('here', data);
+      console.log('just checking!!', data);
     });
   }
 
-  onFileSelected(event: any) {
+  onFileSelected(event: Event): void {
     this.isProcessed = false;
-    if (event.target.files && event.target.files.length > 0) {
-      this.selectedFile = event.target.files[0];
+    const target =  event.target as HTMLInputElement
+    if (target.files && target.files.length) {
+      this.selectedFile = target.files[0];
       if (this.selectedFile) {
         const fileExtension = this.selectedFile.name
           .split('.')
@@ -38,12 +43,11 @@ export class HomeComponent implements OnInit {
 
         if (fileExtension) {
           if (['jpg', 'jpeg', 'png'].includes(fileExtension)) {
-            this.mediaType = 'image';
+            this.mediaType = MediaType.image;
           } else if (fileExtension === 'mp4') {
-            this.mediaType = 'video';
+            this.mediaType = MediaType.video;
           }
         }
-
         this.uploadSuccessful = true;
       } else {
         this.uploadSuccessful = false;
@@ -51,25 +55,22 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  onUpload() {
+  onUpload(): void {
     if (this.selectedFile) {
       this.isLoading = true;
-      console.log('Initiating upload for:', this.selectedFile);
-
       this.dataService.uploadFile(this.selectedFile).subscribe(
         (response) => {
-          console.log('Server Response:', response);
-          this.uploadResponse = response;
-
+          // console.log('Server Response:', response);
           const baseUrl = this.getBaseUrl();
-          if (this.mediaType === 'image') {
+          if (this.mediaType === MediaType.image) {
             this.detectedImageSrc = `${baseUrl}${response.file_path}`;
-          } else if (this.mediaType === 'video') {
+          } else if (this.mediaType === MediaType.video) {
             this.videoSrc = `${baseUrl}${response.file_path}`;
           }
           this.resultsAvailable = true;
           this.isProcessed = true;
           this.isLoading = false;
+          this.extractedText = response.extracted_text ? response.extracted_text : '';
         },
         (error) => console.error('Server Error:', error)
       );
