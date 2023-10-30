@@ -12,12 +12,13 @@ export class HomeComponent implements OnInit {
   extractedText: string = 'AP2414646';
   selectedFile!: File;
   uploadResponse: any = null;
+  uploadSuccessful: boolean = false;
 
   constructor(private dataService: DataService) {}
 
   ngOnInit(): void {
-    this.dataService.getHello().subscribe(data => {
-      console.log('here', data) 
+    this.dataService.getHello().subscribe((data) => {
+      console.log('here', data);
     });
   }
 
@@ -30,6 +31,7 @@ export class HomeComponent implements OnInit {
   onFileSelected(event: any) {
     if (event.target.files && event.target.files.length > 0) {
       this.selectedFile = event.target.files[0];
+      this.uploadSuccessful = this.selectedFile ? true : false;
     }
   }
 

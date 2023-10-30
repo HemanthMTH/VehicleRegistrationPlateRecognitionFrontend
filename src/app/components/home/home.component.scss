@@ -1,16 +1,81 @@
 .card {
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
-  }
-  
-  .card-header {
-    font-weight: bold;
-  }
-  
-  .btn-success {
-    width: 150px;
-  }
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+}
 
+.card-header {
+  font-weight: bold;
+}
+
+.btn-success {
+  width: 150px;
+}
+
+.customColor {
+  background: var(--primary-color);
+}
+
+.customBox {
+  background: var(--primary-color);
+  height: 40px; // Example base height
+}
+
+@media screen and (max-width: 576px) {
+  // Example for small devices
   .customBox {
-    background-color: #00AAFF;
+    height: 30px;
   }
-  
+}
+
+@media screen and (min-width: 577px) and (max-width: 992px) {
+  // Example for medium devices
+  .customBox {
+    height: 35px;
+  }
+}
+
+@media screen and (min-width: 993px) {
+  // Example for large devices
+  .customBox {
+    height: 40px;
+  }
+}
+
+.custom-file-input {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-right: none;
+}
+
+.custom-file-input:focus {
+  box-shadow: none;
+  border-color: inherit;
+}
+
+.custom-file-input.upload-success {
+  border-color: green;
+}
+
+.upload-success-indicator {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 0.75rem;
+  background-color: #fff;
+  border: 1px solid green;
+  border-top-right-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
+}
+
+.upload-success-indicator .fas {
+  font-size: 20px;
+  color: green;
+}
+
+.file-input-container {
+  display: flex;
+  align-items: center;
+}
+
+.form-control {
+  border-radius: 1;
+}
+

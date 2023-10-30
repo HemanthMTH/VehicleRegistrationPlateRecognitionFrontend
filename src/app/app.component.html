@@ -1,37 +1,42 @@
-
-
-<nav class="navbar navbar-expand-lg navbar-light bg-light custom-navbar mb-3">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">LicenseRecog</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-        <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link" aria-current="page" routerLink="/home">Home</a>
-        </li>
-        <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link" routerLink="/members">Members</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
-
-
-<div class="container-fluid flex-grow-1">
-  <router-outlet></router-outlet>
-</div>
-
-<footer>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12 text-center">
-        <p>&copy; {{currentYear}} LicenseRecog
-        </p>
+<div class="d-flex flex-column min-vh-100">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light custom-navbar mb-3">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">LicenseRecog</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+          <li class="nav-item" routerLinkActive="active">
+            <a class="nav-link" aria-current="page" routerLink="/home">Home</a>
+          </li>
+          <li class="nav-item" routerLinkActive="active">
+            <a class="nav-link" routerLink="/members">Members</a>
+          </li>
+        </ul>
       </div>
     </div>
+  </nav>
+
+  <div class="container-fluid flex-grow-1 d-flex flex-column">
+    <router-outlet></router-outlet>
   </div>
-</footer>
+
+  <footer class="mt-2">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <p>&copy; {{ currentYear }} LicenseRecog</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>
