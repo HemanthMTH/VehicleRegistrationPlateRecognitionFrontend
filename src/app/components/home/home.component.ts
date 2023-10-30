@@ -16,6 +16,7 @@ export class HomeComponent implements OnInit {
   detectedImageSrc!: string;
   videoSrc!: string;
   isProcessed: boolean = false;
+  isLoading: boolean = false;
 
   constructor(private dataService: DataService) {}
 
@@ -52,6 +53,7 @@ export class HomeComponent implements OnInit {
 
   onUpload() {
     if (this.selectedFile) {
+      this.isLoading = true;
       console.log('Initiating upload for:', this.selectedFile);
 
       this.dataService.uploadFile(this.selectedFile).subscribe(
@@ -67,6 +69,7 @@ export class HomeComponent implements OnInit {
           }
           this.resultsAvailable = true;
           this.isProcessed = true;
+          this.isLoading = false;
         },
         (error) => console.error('Server Error:', error)
       );

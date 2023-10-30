@@ -32,11 +32,10 @@ export class MembersComponent implements OnInit {
       affiliation: 'University of Maryland, Baltimore County',
       position: 'MS Student',
       imagePath: '../../../assets/images/profile.jpg',
-    }
+    },
   ];
 
   constructor() {}
 
   ngOnInit(): void {}
 }
-
