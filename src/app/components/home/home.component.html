@@ -43,8 +43,6 @@
   </div>
 </div> -->
 
-
-
 <!-- two rows -->
 
 <!-- <div class="container mt-5">
@@ -106,8 +104,6 @@
   </div>
 </div> -->
 
-
-
 <div class="container mt-5">
   <div class="row justify-content-center">
     <div class="col-md-8">
@@ -116,24 +112,29 @@
         <div class="card-header text-white customBox">
           Vehicle Plate Recognition System
         </div>
-        
+
         <!-- Card Body -->
         <div class="card-body">
           <p class="text-muted mb-4">
-            Upload an image or video containing a vehicle registration plate. Our system will automatically detect the plate and extract text from it.
+            Upload an image or video containing a vehicle registration plate.
+            Our system will automatically detect the plate and extract text from
+            it.
           </p>
 
           <form>
             <!-- Supported Formats Note -->
             <div class="mb-3">
               <div class="alert alert-info">
-                <strong>Note:</strong> Please ensure you're uploading files in the supported formats: <strong>.jpg, .jpeg, .png, .mp4</strong>
+                <strong>Note:</strong> Please ensure you're uploading files in
+                the supported formats: <strong>.jpg, .jpeg, .png, .mp4</strong>
               </div>
             </div>
 
             <!-- File Input, Icon, & Button Row -->
             <div class="d-flex align-items-center justify-content-between mb-3">
-              <div class="flex-grow-1 d-flex align-items-center mr-3 file-input-container w-75">
+              <div
+                class="flex-grow-1 d-flex align-items-center mr-3 file-input-container w-75"
+              >
                 <input
                   type="file"
                   class="form-control custom-file-input"
@@ -142,11 +143,20 @@
                   accept=".jpg, .jpeg, .png, .mp4"
                   (change)="onFileSelected($event)"
                 />
-                <div class="upload-success-indicator ml-3" *ngIf="uploadSuccessful">
+                <div
+                  class="upload-success-indicator ml-3"
+                  *ngIf="uploadSuccessful"
+                >
                   <i class="fas fa-check-circle"></i>
                 </div>
               </div>
-              <button type="button" class="btn btn-success customColor" (click)="onUpload()" [disabled]="!uploadSuccessful" [style.background-color]="!uploadSuccessful ? '#dcdcdc' : ''">
+              <button
+                type="button"
+                class="btn btn-success customColor"
+                (click)="onUpload()"
+                [disabled]="!uploadSuccessful"
+                [style.background-color]="!uploadSuccessful ? '#dcdcdc' : ''"
+              >
                 Process
               </button>
             </div>
@@ -158,21 +168,39 @@
 </div>
 
 <!-- Results Container -->
-<div class="container mt-5" *ngIf="resultsAvailable">
+<div class="container mt-5" *ngIf="resultsAvailable && isProcessed">
   <div class="row justify-content-center">
     <div class="col-md-10 col-lg-8">
       <div class="card">
         <!-- Card Header -->
-        <div class="card-header text-white customBox">
-          Recognition Results
-        </div>
-        
+        <div class="card-header text-white customBox">Recognition Results</div>
+
         <!-- Card Body -->
         <div class="card-body">
-          <!-- Display the detected image -->
+          <!-- Display the detected media -->
           <div class="mb-4">
-            <h5>Detected Image</h5>
-            <img [src]="detectedImageSrc" alt="Detected License Plate" class="img-fluid rounded" />
+            <h5>Detected {{ mediaType }}</h5>
+
+            <!-- Display Image -->
+            <ng-container *ngIf="mediaType === 'image'">
+              <img
+                [src]="detectedImageSrc"
+                alt="Detected License Plate"
+                class="img-fluid rounded"
+              />
+            </ng-container>
+
+            <!-- Display Video -->
+            <ng-container *ngIf="mediaType === 'video'">
+              <video
+                [src]="videoSrc"
+                controls
+                class="img-fluid rounded"
+                alt="Detected License Plate"
+                playsinline
+                muted
+              ></video>
+            </ng-container>
           </div>
 
           <!-- Display the recognized text -->
@@ -180,10 +208,11 @@
             <h5>Extracted Text</h5>
             <p class="lead">{{ extractedText }}</p>
           </div>
-          
+
           <!-- Additional Info -->
           <p class="text-muted">
-            The text above has been extracted from the detected vehicle registration plate in your uploaded image/video.
+            The text above has been extracted from the detected vehicle
+            registration plate in your uploaded {{ mediaType }}.
           </p>
 
           <!-- Additional data visualizations could go here -->
