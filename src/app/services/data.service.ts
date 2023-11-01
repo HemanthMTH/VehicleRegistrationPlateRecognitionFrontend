@@ -25,4 +25,12 @@ export class DataService {
     formData.append('file', file, file.name);
     return this.http.post(`${this.baseUrl}/process`, formData);
   }
+
+  signup(userData: any): Observable<any> {
+    return this.http.post(`${this.baseUrl}/signup`, userData);
+  }
+
+  login(userData: any): Observable<any> {
+    return this.http.post(`${this.baseUrl}/login`, userData);
+  }
 }
