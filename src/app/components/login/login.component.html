@@ -1,4 +1,8 @@
 <div class="container mt-5">
+  <!-- Debugging: Remove after fixing the issue
+  <div>Form Value: <pre>{{ loginForm.value | json }}</pre></div>
+  <div>Form Validity: <pre>{{ loginForm.valid | json }}</pre></div> -->
+
   <div class="row justify-content-center">
     <div class="col-md-6">
       <div class="card">
@@ -6,16 +10,16 @@
           Login to LicenseRecog
         </div>
         <div class="card-body">
-          <form (submit)="onLogin($event)">
+          <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
             <div class="mb-3">
               <label for="email" class="form-label">Email</label>
-              <input type="email" class="form-control" id="email" />
+              <input type="email" class="form-control" id="email" formControlName="email">
             </div>
             <div class="mb-3">
               <label for="password" class="form-label">Password</label>
-              <input type="password" class="form-control" id="password" />
+              <input type="password" class="form-control" id="password" formControlName="password">
             </div>
-            <button type="submit" class="btn btn-primary customColor w-100">
+            <button type="submit" class="btn btn-primary customColor w-100" [disabled]="!loginForm.valid">
               Login
             </button>
           </form>

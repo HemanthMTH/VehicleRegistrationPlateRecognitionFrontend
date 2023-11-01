@@ -33,4 +33,8 @@ export class DataService {
   login(userData: any): Observable<any> {
     return this.http.post(`${this.baseUrl}/login`, userData);
   }
+
+  logout(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/logout`);
+  }
 }

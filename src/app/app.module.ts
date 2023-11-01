@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { HttpClientModule } from '@angular/common/http';
@@ -11,6 +11,7 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { MembersComponent } from './components/members/members.component';
 import { SignupComponent } from './components/signup/signup.component';
+import { LogoutComponent } from './components/logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { SignupComponent } from './components/signup/signup.component';
     MembersComponent,
     SignupComponent,
     LoginComponent,
+    LogoutComponent,
   ],
   imports: [
     BrowserModule,
@@ -27,6 +29,7 @@ import { SignupComponent } from './components/signup/signup.component';
     FormsModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],
