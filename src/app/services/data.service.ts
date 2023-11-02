@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -7,6 +7,14 @@ import { Observable } from 'rxjs';
 })
 export class DataService {
   private _baseUrl = 'http://localhost:5000/';
+
+  private httpOptions = {
+    withCredentials: true,
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      charset: 'UTF-8',
+    }),
+  };
 
   constructor(private http: HttpClient) {}
 
@@ -31,10 +39,10 @@ export class DataService {
   }
 
   login(userData: any): Observable<any> {
-    return this.http.post(`${this.baseUrl}/login`, userData);
+    return this.http.post(`${this.baseUrl}/login`, userData, this.httpOptions);
   }
 
   logout(): Observable<any> {
-    return this.http.get(`${this.baseUrl}/logout`);
+    return this.http.post(`${this.baseUrl}/logout`, {}, this.httpOptions);
   }
 }

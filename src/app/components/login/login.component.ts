@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
       this.dataService.login(userData).subscribe(
         (response: any) => {
           console.log(response);
-          this.toastr.success('Successfully logged in.', 'Success')
+          this.toastr.success(`Logged in a ${response.user.username}`, 'Success')
           setTimeout(() => {
             this.router.navigate(['/home']);
           }, 1500);

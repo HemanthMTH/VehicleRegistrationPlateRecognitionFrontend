@@ -3,3 +3,33 @@
     --primary-color: linear-gradient(to right, #434343 0%, black 100%);
     --btn-disabled-color: #c8c8c8;
 }
+
+.customColor {
+    background: var(--primary-color);
+  }
+  
+  .customBox {
+    background: var(--primary-color);
+    height: 40px; // Example base height
+  }
+  
+  @media screen and (max-width: 576px) {
+    // Example for small devices
+    .customBox {
+      height: 30px;
+    }
+  }
+  
+  @media screen and (min-width: 577px) and (max-width: 992px) {
+    // Example for medium devices
+    .customBox {
+      height: 35px;
+    }
+  }
+  
+  @media screen and (min-width: 993px) {
+    // Example for large devices
+    .customBox {
+      height: 40px;
+    }
+  }

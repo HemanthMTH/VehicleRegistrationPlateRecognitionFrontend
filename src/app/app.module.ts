@@ -11,7 +11,6 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { MembersComponent } from './components/members/members.component';
 import { SignupComponent } from './components/signup/signup.component';
-import { LogoutComponent } from './components/logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +19,6 @@ import { LogoutComponent } from './components/logout/logout.component';
     MembersComponent,
     SignupComponent,
     LoginComponent,
-    LogoutComponent,
   ],
   imports: [
     BrowserModule,
@@ -29,7 +27,7 @@ import { LogoutComponent } from './components/logout/logout.component';
     FormsModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
