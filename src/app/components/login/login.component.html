@@ -1,33 +1,80 @@
-<div class="container mt-5">
-  <!-- Debugging: Remove after fixing the issue
-  <div>Form Value: <pre>{{ loginForm.value | json }}</pre></div>
-  <div>Form Validity: <pre>{{ loginForm.valid | json }}</pre></div> -->
 
-  <div class="row justify-content-center">
-    <div class="col-md-6">
-      <div class="card">
-        <div class="card-header customBox text-white">
-          Login to LicenseRecog
+<div class="background">
+  <div class="container py-5 h-100">
+    <div class="row justify-content-center align-items-center h-100">
+      <div class="col-md-6">
+        <div class="text-center mb-4">
+          <!-- Cool Animated Title -->
+          <h1 class="display-4 fw-bold text-white">
+            <i class="bi bi-camera-fill pe-2"></i>
+            PlatePro<span class="text-primary">Vision</span>
+          </h1>
+          <p class="lead text-white-50">License Recognition Made Easy</p>
         </div>
-        <div class="card-body">
-          <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
-            <div class="mb-3">
-              <label for="email" class="form-label">Email</label>
-              <input type="email" class="form-control" id="email" formControlName="email">
+        <div class="card border-0 shadow-sm">
+          <div class="card-header bg-primary text-white text-center py-3">
+            <h3 class="mb-0">Login to LicenseRecog</h3>
+          </div>
+          <div class="card-body px-4 py-5">
+            <form [formGroup]="loginForm" (ngSubmit)="onLogin()" novalidate>
+              <div class="form-floating mb-3">
+                <input
+                  type="email"
+                  class="form-control"
+                  id="email"
+                  placeholder="name@example.com"
+                  formControlName="email"
+                />
+                <label for="email">Email</label>
+                <div
+                  *ngIf="
+                    loginForm.controls['email'].invalid &&
+                    loginForm.controls['email'].touched
+                  "
+                  class="invalid-feedback d-block"
+                >
+                  Please enter a valid email address.
+                </div>
+              </div>
+              <div class="form-floating mb-4">
+                <input
+                  type="password"
+                  class="form-control"
+                  id="password"
+                  placeholder="Password"
+                  formControlName="password"
+                />
+                <label for="password">Password</label>
+                <div
+                  *ngIf="
+                    loginForm.controls['password'].invalid &&
+                    loginForm.controls['password'].touched
+                  "
+                  class="invalid-feedback d-block"
+                >
+                  Please enter your password.
+                </div>
+              </div>
+              <div class="d-grid gap-2">
+                <button
+                  type="submit"
+                  class="btn btn-primary btn-lg"
+                  [disabled]="!loginForm.valid"
+                >
+                  Sign In
+                </button>
+              </div>
+            </form>
+            <div class="mt-4 text-center">
+              <p>
+                Don't have an account?
+                <a href="/signup" class="text-primary">Sign up</a>
+              </p>
             </div>
-            <div class="mb-3">
-              <label for="password" class="form-label">Password</label>
-              <input type="password" class="form-control" id="password" formControlName="password">
-            </div>
-            <button type="submit" class="btn btn-primary w-100" [disabled]="!loginForm.valid">
-              Login
-            </button>
-          </form>
-          <div class="mt-3 text-center">
-            <a href="/signup">Don't have an account? Signup</a>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+

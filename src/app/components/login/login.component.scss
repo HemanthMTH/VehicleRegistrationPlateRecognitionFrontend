@@ -1,3 +1,85 @@
-.customColor {
-    background: var(--primary-color);
+// Define your primary brand color
+$primary-color: #007bff;
+$secondary-color: #6c757d;
+
+// Define the gradient background colors
+$background-start: $primary-color;
+$background-end: adjust-hue($primary-color, -20%);
+
+// Apply the background to the entire page content
+.background {
+  background: linear-gradient(135deg, $background-start 0%, $background-end 100%);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+// Custom Box Shadow for input focus
+$custom-shadow: 0 0 0 0.2rem rgba($primary-color, 0.25);
+
+// Animation for the title
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, -50px, 0);
   }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+// Apply the animation
+.display-4 {
+  animation: fadeInDown 1.5s ease-out;
+  color: white;
+}
+
+// Style for the subtitle
+.lead {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+// Card styling
+.card {
+  border: 0;
+  border-radius: 0.5rem; // Rounded corners
+  overflow: hidden; // Ensures no overflow for any inner content
+
+  .card-header {
+    border-bottom: none;
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+  }
+
+  .btn-primary {
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+}
+
+// Form control focus and feedback
+.form-control:focus {
+  box-shadow: $custom-shadow;
+}
+
+.invalid-feedback {
+  display: none;
+
+  &.d-block {
+    display: block;
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .background {
+    align-items: flex-start;
+  }
+
+  .card {
+    margin-top: 2rem;
+  }
+}
