@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { Observable } from 'rxjs';
-import { AuthenticationService } from './services/authentication.service';
 import { DataService } from './services/data.service';
 
 @Component({
@@ -13,15 +11,16 @@ import { DataService } from './services/data.service';
 export class AppComponent {
   title = 'LicenseRecog';
   currentYear = new Date().getFullYear();
-  isLoggedIn$: Observable<boolean>;
+  isLoggedIn: boolean = false;
 
   constructor(
-    private authService: AuthenticationService,
     private dataService: DataService,
     private router: Router,
-    private toastr: ToastrService,
+    private toastr: ToastrService
   ) {
-    this.isLoggedIn$ = this.authService.isAuthenticated();
+    this.dataService.isLoggedIn.subscribe((loggedIn) => {
+      this.isLoggedIn = loggedIn;
+    });
   }
 
   logout() {
