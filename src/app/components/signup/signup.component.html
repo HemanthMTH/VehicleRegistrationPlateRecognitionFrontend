@@ -1,26 +1,61 @@
-<div class="container mt-5">
-  <div class="row justify-content-center">
-    <div class="col-md-6">
-      <div class="card">
-        <div class="card-header customBox text-white">
-          Signup to LicenseRecog
+<div class="background">
+  <div class="container py-5 h-100">
+    <div class="row justify-content-center align-items-center h-100">
+      <div class="col-md-6">
+        <div class="text-center mb-4">
+          <h1 class="display-4 fw-bold title-animation">
+            <i class="bi bi-camera-fill pe-2" style="color: #007bff;"></i>
+            <span class="pro">PlatePro</span><span class="text-primary">Vision</span>
+          </h1>
+          <p class="lead subtitle">License Recognition Made Easy</p>          
         </div>
-        <div class="card-body">
-          <form [formGroup]="signupForm" (submit)="onSignup()">
-            <div class="mb-3">
-              <label for="username" class="form-label">Username</label>
-              <input type="text" class="form-control" id="username" formControlName="username">
-            </div>
-            <div class="mb-3">
-              <label for="email" class="form-label">Email</label>
-              <input type="email" class="form-control" id="email" formControlName="email">
-            </div>
-            <div class="mb-3">
-              <label for="password" class="form-label">Password</label>
-              <input type="password" class="form-control" id="password" formControlName="password">
-            </div>
-            <button type="submit" class="btn btn-primary w-100" [disabled]="!signupForm.valid">Signup</button>
-          </form>
+        <div class="card border-0 shadow-sm">
+          <div class="card-header bg-primary text-white text-center py-3">
+            <!-- Signup to PlateProVision -->
+          </div>
+          <div class="card-body px-4 pt-4 pb-3">
+            <form [formGroup]="signupForm" (ngSubmit)="onSignup()" novalidate>
+              <div class="form-floating mb-3">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="username"
+                  placeholder="Username"
+                  formControlName="username"
+                />
+                <label for="username">Username</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input
+                  type="email"
+                  class="form-control"
+                  id="email"
+                  placeholder="Email"
+                  formControlName="email"
+                />
+                <label for="email">Email</label>
+              </div>
+              <div class="form-floating mb-4">
+                <input
+                  type="password"
+                  class="form-control"
+                  id="password"
+                  placeholder="Password"
+                  formControlName="password"
+                />
+                <label for="password">Password</label>
+              </div>
+              <div class="d-grid gap-2">
+                <button
+                  type="submit"
+                  class="btn btn-primary btn-lg"
+                  [disabled]="!signupForm.valid"
+                >
+                  Signup
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </div>

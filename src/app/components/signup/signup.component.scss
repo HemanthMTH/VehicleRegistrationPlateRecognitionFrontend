@@ -1,3 +1,65 @@
-.customColor {
-    background: var(--primary-color);
+// You may already have these colors defined
+$primary-color: #007bff;
+$secondary-color: #6c757d;
+
+// Simple fade-in animation
+@keyframes fadeIn {
+  from {
+    opacity: 0;
   }
+  to {
+    opacity: 1;
+  }
+}
+
+// Apply this mixin to input fields to add focus styles
+@mixin input-focus($color) {
+  &:focus {
+    box-shadow: 0 0 0 0.2rem rgba($color, 0.25);
+  }
+}
+
+.container {
+  margin-top: 5rem; // Adjust as necessary for your layout
+  .card {
+    animation: fadeIn 1s ease-in-out;
+    .card-header {
+      background-color: $primary-color;
+      color: white;
+      text-align: center;
+      font-size: 1.25rem; // Adjust the size as needed
+      // Reuse your customBox class styles if needed
+    }
+    .card-body {
+      form {
+        .form-label {
+          color: $secondary-color; // Use the secondary color for label text
+        }
+        .form-control {
+          @include input-focus($primary-color);
+          // Include other form control styles as necessary
+        }
+        button {
+          width: 100%;
+          margin-top: 1rem;
+          background-color: $primary-color;
+          border-color: $primary-color;
+          &:hover {
+            background-color: darken($primary-color, 5%);
+            border-color: darken($primary-color, 5%);
+          }
+        }
+      }
+    }
+  }
+}
+
+// Responsive adjustments for smaller screens
+@media (max-width: 768px) {
+  .container {
+    margin-top: 0;
+    .row {
+      justify-content: center;
+    }
+  }
+}

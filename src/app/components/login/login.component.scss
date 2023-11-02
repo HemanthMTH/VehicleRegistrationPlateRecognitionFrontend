@@ -1,13 +1,9 @@
-// Define your primary brand color
+// Brand colors
 $primary-color: #007bff;
 $secondary-color: #6c757d;
 
-// Define the gradient background colors
-$background-start: $primary-color;
-$background-end: adjust-hue($primary-color, -20%);
-
 .background {
-  background: linear-gradient(135deg, $background-start 0%, $background-end 100%);
+  background-color: #f8f9fa; // A light gray background, you can change this to any color you like
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -15,37 +11,25 @@ $background-end: adjust-hue($primary-color, -20%);
   padding: 1rem;
 }
 
-// Custom Box Shadow for input focus
-$custom-shadow: 0 0 0 0.2rem rgba($primary-color, 0.25);
-
-// Animation for the title
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+.iconColor{
+    background-color: var(--primary-color);
 }
 
 // Apply the animation
 .title-animation {
-  animation: fadeIn 2s ease-in-out;
-  color: white; // Adjust as needed for contrast
-}
+    animation: fadeIn 2s ease-in-out;
+    color: white; // Adjust as needed for contrast
+  }
 
-// Style for the subtitle with shadow for better visibility
-.subtitle {
-  color: white; // Adjust as needed for contrast
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-}
+// Custom Box Shadow for input focus
+$custom-shadow: 0 0 0 0.2rem rgba($primary-color, 0.25);
 
 .card {
   border: 0;
   border-radius: 0.5rem;
   overflow: hidden;
-  background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(10px);
+  background: #fff; // Card with white background for contrast
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); // A subtle shadow to lift the card from the background
 }
 
 .form-control:focus {
@@ -57,6 +41,25 @@ $custom-shadow: 0 0 0 0.2rem rgba($primary-color, 0.25);
   &.d-block {
     display: block;
   }
+}
+
+.pro{
+    color: #6c757d;
+}
+
+// Simple fade-in animation
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+// Apply the fade-in animation to the card for a subtle effect
+.card {
+  animation: fadeIn 1s ease-in-out;
 }
 
 @media (max-width: 768px) {

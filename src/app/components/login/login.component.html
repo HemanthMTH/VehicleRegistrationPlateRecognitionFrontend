@@ -4,18 +4,16 @@
     <div class="row justify-content-center align-items-center h-100">
       <div class="col-md-6">
         <div class="text-center mb-4">
-          <!-- Cool Animated Title -->
           <h1 class="display-4 fw-bold title-animation">
-            <i class="bi bi-camera-fill pe-2"></i>
-            PlatePro<span class="text-primary">Vision</span>
+            <i class="bi bi-camera-fill pe-2" style="color: #007bff;"></i>
+            <span class="pro">PlatePro</span><span class="text-primary">Vision</span>
           </h1>
           <p class="lead subtitle">License Recognition Made Easy</p>          
         </div>
         <div class="card border-0 shadow-sm">
           <div class="card-header bg-primary text-white text-center py-3">
-            <h3 class="mb-0">Login to LicenseRecog</h3>
           </div>
-          <div class="card-body px-4 py-5">
+          <div class="card-body px-4 pt-4 pb-0">
             <form [formGroup]="loginForm" (ngSubmit)="onLogin()" novalidate>
               <div class="form-floating mb-3">
                 <input
